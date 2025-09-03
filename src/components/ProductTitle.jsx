@@ -4,6 +4,51 @@ import { SplitText } from "gsap/all";
 
 const ProductTitle = () => {
 
+    useGSAP(() => {
+      const tl = gsap.timeline();
+
+      const firstMsgSplit = SplitText.create(".first-title", {
+        type: "chars",
+      });
+      const secondMsgSplit = SplitText.create(".second-title", {
+        type: "chars",
+      });
+
+      tl.from(firstMsgSplit.chars, {
+        yPercent: 200,
+        ease: "power1.inOut",
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: ".first-title",
+          start: "top 130%",
+          end: "top 115%",
+          scrub: true,
+        },
+      })
+        .to(".title-scroll", {
+          duration: 0.05,
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          ease: "circ.out",
+          scrollTrigger: {
+            trigger: ".title-scroll",
+            start: "top 140%",
+            end: "top 130%",
+            scrub: true,
+          },
+        })
+        .from(secondMsgSplit.chars, {
+          yPercent: 200,
+          ease: "power1.inOut",
+          stagger: 0.05,
+          scrollTrigger: {
+            trigger: ".second-title",
+            start: "top 150%",
+            end: "top 135%",
+            scrub: true,
+          },
+        });
+    });
+
   return (
     <div className="general-title flex flex-col justify-center items-center h-full gap-32">
       <div className="overflow-hidden text-[#523122] pr-2">
