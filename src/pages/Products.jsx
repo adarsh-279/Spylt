@@ -11,14 +11,14 @@ const Products = () => {
     const scrollAmt = innerRef.current.scrollWidth - window.innerWidth;
 
     gsap.to(innerRef.current, {
-      x: `-${scrollAmt}px`,
+      x: `-${scrollAmt + 200}px`,
       ease: "none",
       scrollTrigger: {
         trigger: ".product-section",
-        start: "-10% top",
-        end: `+=${scrollAmt}`,
+        start: "-70% top",
+        end: `+=${scrollAmt + 200}px`,
         scrub: true,
-        pin:true,
+        pin: true,
       },
     });
   });
